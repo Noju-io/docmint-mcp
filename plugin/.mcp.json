@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "docmint": {
+      "command": "npx",
+      "args": ["-y", "docmint-mcp@0.1.1"]
+    },
+    "docmint-links": {
+      "type": "http",
+      "url": "https://docmint.io/api/mcp"
+    }
+  }
+}

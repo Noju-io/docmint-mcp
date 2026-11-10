@@ -1,0 +1,16 @@
+{
+  "name": "docmint",
+  "displayName": "Docmint",
+  "version": "1.0.0",
+  "description": "PDF and image tools: compress, merge, split, rotate, OCR, sign, protect, unlock, watermark, convert and more. In Claude Code and Cowork the files are processed on your computer; in chat, Claude gives you a Docmint link with the settings filled in.",
+  "author": { "name": "Docmint", "email": "hello@docmint.io", "url": "https://docmint.io" },
+  "homepage": "https://docmint.io/mcp",
+  "repository": "https://github.com/Noju-io/docmint-mcp",
+  "license": "MIT",
+  "keywords": ["pdf", "compress-pdf", "merge-pdf", "split-pdf", "ocr", "sign-pdf", "image", "heic", "convert"],
+  "icon": "./icon.png",
+  "documentationUrl": "https://docmint.io/mcp",
+  "supportUrl": "https://docmint.io/contact",
+  "privacyPolicyUrl": "https://docmint.io/privacy",
+  "termsOfServiceUrl": "https://docmint.io/terms"
+}

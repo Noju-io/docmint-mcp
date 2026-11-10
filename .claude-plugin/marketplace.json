@@ -1,0 +1,15 @@
+{
+  "name": "docmint",
+  "owner": {
+    "name": "Docmint",
+    "email": "hello@docmint.io"
+  },
+  "description": "Docmint PDF and image tools for Claude.",
+  "plugins": [
+    {
+      "name": "docmint",
+      "source": "./plugin",
+      "description": "PDF and image tools: compress, merge, split, OCR, sign, protect, convert and more. Files are processed on your computer or in your browser, never uploaded."
+    }
+  ]
+}
