@@ -1,0 +1,36 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.Noju-io/docmint",
+  "title": "Docmint",
+  "description": "PDF and image tools for AI agents: compress, merge, split, OCR, sign. Runs locally, never uploads.",
+  "websiteUrl": "https://docmint.io/mcp",
+  "repository": {
+    "url": "https://github.com/Noju-io/docmint-mcp",
+    "source": "github"
+  },
+  "version": "0.1.1",
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "docmint-mcp",
+      "version": "0.1.1",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "DOCMINT_API_KEY",
+          "description": "Optional Docmint API key to use your plan's runs (create one on docmint.io/account). Without it you get 3 free runs a day.",
+          "isRequired": false,
+          "isSecret": true
+        }
+      ]
+    }
+  ],
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://docmint.io/api/mcp"
+    }
+  ]
+}

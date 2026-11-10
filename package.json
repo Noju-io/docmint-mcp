@@ -1,0 +1,55 @@
+{
+  "name": "docmint-mcp",
+  "version": "0.1.1",
+  "description": "Docmint PDF and image tools for Claude, Cursor and other MCP clients. Files are processed on your machine, never uploaded.",
+  "mcpName": "io.github.Noju-io/docmint",
+  "type": "module",
+  "bin": {
+    "docmint-mcp": "dist/docmint-mcp.mjs"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "server.json"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "pdf",
+    "claude",
+    "cursor",
+    "compress-pdf",
+    "merge-pdf",
+    "ocr"
+  ],
+  "homepage": "https://docmint.io/mcp",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Noju-io/docmint-mcp.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Noju-io/docmint-mcp/issues",
+    "email": "hello@docmint.io"
+  },
+  "author": "Docmint <hello@docmint.io>",
+  "license": "MIT",
+  "dependencies": {
+    "@cantoo/pdf-lib": "^2.11.1",
+    "@modelcontextprotocol/sdk": "^1.32.2",
+    "@napi-rs/canvas": "^1.1.0",
+    "jszip": "^3.10.2",
+    "pdfjs-dist": "^6.4.299",
+    "wasm-feature-detect": "1.9.0",
+    "zod": "^3.25.76"
+  },
+  "optionalDependencies": {
+    "tesseract.js": "^7.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
