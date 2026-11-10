@@ -1,0 +1,47 @@
+# Publishes server.json to the official MCP Registry (registry.modelcontextprotocol.io) as io.github.Noju-io/docmint.
+# GitHub OIDC grants this repository's owner namespace (io.github.Noju-io/*), so no token or secret is needed.
+# Run it from the Actions tab after publishing a new docmint-mcp version to npm and updating server.json here.
+name: Publish to MCP Registry
+
+on:
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+  contents: read
+
+env:
+  MCP_PUBLISHER_VERSION: v1.8.9
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7.0.1
+
+      - uses: sigstore/cosign-installer@v4.1.3
+
+      - name: Install mcp-publisher (signature verified)
+        run: |
+          base="https://github.com/modelcontextprotocol/registry/releases/download/${MCP_PUBLISHER_VERSION}"
+          archive="mcp-publisher_linux_amd64.tar.gz"
+          curl -fsSL -o "$archive" "$base/$archive"
+          curl -fsSL -o "$archive.sigstore.json" "$base/$archive.sigstore.json"
+          cosign verify-blob "$archive" \
+            --bundle "$archive.sigstore.json" \
+            --certificate-identity "https://github.com/modelcontextprotocol/registry/.github/workflows/release.yml@refs/tags/${MCP_PUBLISHER_VERSION}" \
+            --certificate-oidc-issuer "https://token.actions.githubusercontent.com"
+          tar xzf "$archive" mcp-publisher
+          rm "$archive" "$archive.sigstore.json"
+
+      - name: Check server.json matches the npm package
+        run: |
+          v=$(jq -r .version server.json)
+          npm_name=$(npm view "docmint-mcp@$v" mcpName)
+          test "$npm_name" = "$(jq -r .name server.json)" || { echo "docmint-mcp@$v on npm has mcpName '$npm_name'"; exit 1; }
+
+      - name: Log in with GitHub OIDC
+        run: ./mcp-publisher login github-oidc
+
+      - name: Publish
+        run: ./mcp-publisher publish
